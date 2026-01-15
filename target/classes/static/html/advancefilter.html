@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authorizer Portal | Inventory Filter</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/css/advancefilter.css">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- External JS -->
+  <script src="/js/advancefilter.js" defer></script>
+
+  <!-- Print only the table and selected filters -->
+  <style>
+    @media print {
+      body * { visibility: hidden; }
+      #resultArea, #resultArea * { visibility: visible; }
+      #resultArea { position: absolute; top: 0; left: 0; width: 100%; }
+    }
+
+    #selectedFilters {
+      font-weight: 500;
+      margin: 10px 0;
+      color: var(--gray-700);
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <h2>Authorizer Portal</h2>
+  <nav class="sidebar-nav">
+    <a href="correspondent.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+    <a href="approval.html" class="nav-item"><i class="fas fa-shopping-cart"></i> Cart</a>
+    <a href="inward1filter.html" class="nav-item"><i class="fas fa-arrow-down"></i> Inward Filtration</a>
+    <a href="advancefilter.html" class="nav-item active"><i class="fas fa-filter"></i> Advanced Filtration</a>
+    <a href="index.html" class="nav-item logout" onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </nav>
+</aside>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div class="container">
+    <h1>AUTHORIZER PORTAL</h1>
+    <h2>INVENTORY FILTER</h2>
+
+    <!-- Form Box Container -->
+    <div class="box-container">
+      <form id="filterForm" class="filter-form">
+
+        <!-- Buyer -->
+        <div class="form-group">
+          <label for="buyerSelect">Buyer</label>
+          <select id="buyerSelect" name="buyer" class="search-input"></select>
+        </div>
+
+        <!-- Department -->
+        <div class="form-group">
+          <label for="deptSelect">Department</label>
+          <select id="deptSelect" name="dept" class="search-input"></select>
+        </div>
+
+        <!-- Institution -->
+        <div class="form-group">
+          <label for="instiSelect">Institution</label>
+          <select id="instiSelect" name="insti" class="search-input"></select>
+        </div>
+
+        <!-- Stock -->
+        <div class="form-group">
+          <label for="stockSelect">Stock</label>
+          <select id="stockSelect" name="stock_name" class="search-input"></select>
+        </div>
+
+        <!-- Particular Date -->
+        <div class="form-group">
+          <label for="particular_date">Particular Date</label>
+          <input type="date" id="particular_date" name="particular_date" class="search-input">
+        </div>
+
+        <!-- From Date -->
+        <div class="form-group">
+          <label for="from_date">From Date</label>
+          <input type="date" id="from_date" name="from_date" class="search-input">
+        </div>
+
+        <!-- To Date -->
+        <div class="form-group">
+          <label for="to_date">To Date</label>
+          <input type="date" id="to_date" name="to_date" class="search-input">
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+          <button type="button" onclick="filterData()" class="btn btn-primary">
+            <i class="fas fa-filter"></i> Filter
+          </button>
+
+          <button type="button" id="resetBtn" class="btn btn-warning">
+            <i class="fas fa-sync-alt"></i> Reset
+          </button>
+
+          <button type="button" onclick="printResults()" class="btn btn-print">
+            <i class="fas fa-print"></i> Print
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Result Area including Selected Filters -->
+    <div class="scrollable-table-container" id="resultArea">
+      <div id="selectedFilters">Selected Filters: None</div>
+
+      <table border="1" cellspacing="0" cellpadding="5">
+        <thead>
+          <tr>
+            <th>Buyer</th>
+            <th>Department</th>
+            <th>Institution</th>
+            <th>Stock</th>
+            <th>Quantity</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6">No records found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

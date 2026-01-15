@@ -1,0 +1,309 @@
+/* ===================== GLOBAL ===================== */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+  margin: 0;
+  color: #111827;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===================== SIDEBAR ===================== */
+.sidebar {
+  width: 220px;
+  background-color: #1f2937;
+  color: #fff;
+  padding: 32px 20px;
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-item.active {
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav-item:hover {
+  background-color: #374151;
+  color: #fff;
+}
+
+.nav-item.logout {
+  margin-top: auto;
+  color: #fca5a5;
+}
+
+.nav-item.logout:hover {
+  background-color: rgba(239,68,68,0.15);
+  color: #dc2626;
+}
+
+/* ===================== MAIN CONTENT ===================== */
+.main-content {
+  margin-left: 260px;
+  flex: 1;
+  padding: 28px 32px;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: #1e40af;
+  margin-bottom: 4px;
+}
+
+.header p {
+  color: #4b5563;
+  margin-bottom: 24px;
+}
+
+/* ===================== CARDS ===================== */
+.card, .form-section, .list-section {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* ===================== FORM ELEMENTS ===================== */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #111827;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  margin-bottom: 12px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 4px rgba(37,99,235,0.3);
+  outline: none;
+}
+
+/* ===================== BUTTONS ===================== */
+#add_item, #stockForm button[type="submit"], .btn-print {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#add_item:hover, #stockForm button[type="submit"]:hover, .btn-print:hover {
+  background-color: #1e40af;
+  transform: translateY(-2px);
+}
+
+.btn-print i {
+  margin-right: 6px;
+}
+
+/* ===================== ITEM ROW ===================== */
+.item-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.item-row input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+.remove-item {
+  background-color: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.remove-item:hover {
+  background-color: #b91c1c;
+}
+
+/* ===================== AUTOCOMPLETE SUGGESTIONS ===================== */
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.suggestion-item:hover {
+  background-color: #e0f2fe;
+}
+
+/* ===================== TABLE ===================== */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+thead tr {
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+tbody tr:hover {
+  background-color: #e0f2fe;
+  transition: background 0.2s;
+}
+
+.no-data {
+  font-style: italic;
+  color: #9ca3af;
+}
+
+/* ===================== ICON COLORS ===================== */
+.text-green { color: #16a34a; }
+.text-red { color: #dc2626; }
+.text-orange { color: #f97316; }
+
+/* ===================== RESPONSIVE ===================== */
+@media screen and (max-width: 768px) {
+  .main-content { margin-left: 0; padding: 16px; }
+  .item-row { flex-direction: column; }
+  th, td { font-size: 0.8rem; padding: 6px 8px; }
+  .sidebar { width: 100%; height: auto; position: relative; padding-top: 15px; }
+  .sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 4px; justify-content: center; }
+  .sidebar-nav .nav-item { flex: 1 1 auto; text-align: center; margin-bottom: 4px; }
+}
+
+/* ===================== PRINT STYLES ===================== */
+@media print {
+  body {
+    background: #fff;
+    color: #000 !important;
+    font-size: 12pt;
+    margin: 20px;
+  }
+
+  h1, h2, h3 {
+    color: #000 !important;
+    page-break-after: avoid;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: table !important;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    page-break-inside: auto;
+  }
+
+  th, td {
+    border: 1px solid #000 !important;
+    padding: 6px 8px;
+    text-align: center;
+    color: #000 !important;
+    word-break: break-word;
+  }
+
+  thead th {
+    background-color: #f3f4f6 !important;
+    -webkit-print-color-adjust: exact;
+    font-weight: 600;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  .no-data {
+    text-align: center;
+    font-style: normal;
+    color: #000 !important;
+  }
+
+  button, .btn-print {
+    display: none !important;
+  }
+}

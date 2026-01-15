@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bills For  Approval</title>
+
+    <!-- Font Awesome (REQUIRED FOR ICONS) -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Font (Matches UI) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="/css/approval.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>Authorizer Portal</h2>
+    <nav>
+        <a href="correspondent.html" class="nav-item">
+            <i class="fas fa-home"></i> Home
+        </a>
+
+        <a href="approval.html" class="nav-item active">
+            <i class="fas fa-shopping-cart"></i> Cart
+        </a>
+
+        <a href="inward1filter.html" class="nav-item">
+            <i class="fas fa-arrow-down"></i> Inward Filtration
+        </a>
+
+        <a href="advancefilter.html" class="nav-item">
+            <i class="fas fa-filter"></i> Advanced Filtration
+        </a>
+
+        <a href="index.html" class="nav-item logout">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </nav>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <h1>FORWARDED BILLS FOR APPROVAL</h1>
+
+    <div class="approval-grid">
+
+        <!-- USER QUEUE -->
+        <div class="queue-box">
+            <h2>User Bills</h2>
+            <div id="userBillsList" class="bill-list"></div>
+        </div>
+
+        <!-- ADMIN QUEUE -->
+        <div class="queue-box">
+            <h2>Admin Bills</h2>
+            <div id="adminBillsList" class="bill-list"></div>
+        </div>
+
+        <!-- DETAILS PANEL -->
+        <div class="bill-details" id="billDetails">
+            <div class="empty-state">
+                <p>📌 Select a bill from the left to view details</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- JS -->
+<script src="/js/approval.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bill Records | Admin Portal</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/records.css" />
+</head>
+<body>
+<div class="app-container">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="sidebar-header"><h2>Admin Portal</h2></div>
+    <nav class="sidebar-nav">
+      <a href="admin.html" class="nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="forwardbill.html" class="nav-item"><i class="fas fa-file-invoice"></i> Pending Bills</a>
+      <a href="delivery.html" class="nav-item "><i class="fas fa-shipping-fast"></i> Quick Dispatch</a>
+      <a href="records.html" class="nav-item active"><i class="fas fa-history"></i> Invoice History</a>
+      <a href="purchase.html" class="nav-item"><i class="fas fa-cart-plus"></i> Procurement</a>
+      <a href="inwardfilter.html" class="nav-item"><i class="fas fa-filter"></i> Inward Filter</a>
+      <a href="advance1filter.html" class="nav-item"><i class="fas fa-search-plus"></i> Advance Filter</a>
+      <a href="index.html" class="nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main-content">
+    <header class="header">
+      <h1>Bill Records 📄</h1>
+      <p>View and manage all user and admin bill records</p>
+    </header>
+
+    <!-- ================= USER SECTION ================= -->
+    <section class="card">
+      <h2>User Bill Records</h2>
+
+      <!-- User Approved Bills -->
+      <div id="userApprovedSection" class="bill-section">
+        <h3><i class="fas fa-check-circle text-green"></i> Approved Bills</h3>
+        <button class="btn-print" onclick="printSection('userApprovedSection')"><i class="fas fa-print"></i> Print</button>
+        <div class="table-wrapper">
+          <table class="no-message">
+            <thead>
+              <tr>
+                <th>Bill ID</th><th>Buyer</th><th>Dept</th><th>Institution</th>
+                <th>Stock</th><th>Qty</th><th>Status</th><th>Created Date</th>
+              </tr>
+            </thead>
+            <tbody id="userApproved">
+              <tr><td colspan="8" class="no-data">Loading approved bills...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- User Rejected Bills -->
+      <div id="userRejectedSection" class="bill-section">
+        <h3><i class="fas fa-times-circle text-red"></i> Rejected Bills</h3>
+        <button class="btn-print" onclick="printSection('userRejectedSection')"><i class="fas fa-print"></i> Print</button>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Bill ID</th><th>Buyer</th><th>Dept</th><th>Institution</th>
+                <th>Stock</th><th>Qty</th><th>Status</th><th>Message</th><th>Created Date</th>
+              </tr>
+            </thead>
+            <tbody id="userRejected">
+              <tr><td colspan="9" class="no-data">Loading rejected bills...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- User Delivered Bills -->
+      <div id="userDeliveredSection" class="bill-section">
+        <h3><i class="fas fa-truck text-orange"></i> Delivered Bills</h3>
+        <button class="btn-print" onclick="printSection('userDeliveredSection')"><i class="fas fa-print"></i> Print</button>
+        <div class="table-wrapper">
+          <table class="no-message">
+            <thead>
+              <tr>
+                <th>Bill ID</th><th>Buyer</th><th>Dept</th><th>Institution</th>
+                <th>Stock Name</th><th>Qty</th><th>Status</th><th>Created Date</th>
+              </tr>
+            </thead>
+            <tbody id="userDelivered">
+              <tr><td colspan="8" class="no-data">Loading delivered bills...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- ================= ADMIN SECTION ================= -->
+    <section class="card">
+      <h2>Admin Bill Records</h2>
+
+      <!-- Admin Approved Bills -->
+      <div id="adminApprovedSection" class="bill-section">
+        <h3><i class="fas fa-check-circle text-green"></i> Approved Bills</h3>
+        <button class="btn-print" onclick="printSection('adminApprovedSection')"><i class="fas fa-print"></i> Print</button>
+        <div class="table-wrapper">
+          <table class="no-message">
+            <thead>
+              <tr>
+                <th>Order ID</th><th>Buyer</th><th>Department</th><th>Institution</th><th>Stock</th><th>Qty</th>
+                <th>Status</th><th>Created Date</th>
+              </tr>
+            </thead>
+            <tbody id="adminApproved">
+              <tr><td colspan="8" class="no-data">Loading approved orders...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin Rejected Bills -->
+      <div id="adminRejectedSection" class="bill-section">
+        <h3><i class="fas fa-times-circle text-red"></i> Rejected Bills</h3>
+        <button class="btn-print" onclick="printSection('adminRejectedSection')"><i class="fas fa-print"></i> Print</button>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th><th>Buyer</th><th>Department</th><th>Institution</th><th>Stock</th><th>Qty</th>
+                <th>Status</th><th>Message</th><th>Created Date</th>
+              </tr>
+            </thead>
+            <tbody id="adminRejected">
+              <tr><td colspan="9" class="no-data">Loading rejected orders...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="/js/records.js"></script>
+</body>
+</html>

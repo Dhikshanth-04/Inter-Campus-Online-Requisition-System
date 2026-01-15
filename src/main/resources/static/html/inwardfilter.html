@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Filter</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/css/inwardfilter.css">
+
+  <!-- External JS -->
+  <script src="/js/inwardfilter.js" defer></script>
+</head>
+
+<body>
+ <aside class="sidebar">
+    <div class="sidebar-header"><h2>Admin Portal</h2></div>
+    <nav class="sidebar-nav">
+      <a href="admin.html" class="nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="forwardbill.html" class="nav-item"><i class="fas fa-file-invoice"></i> Pending Bills</a>
+      <a href="delivery.html" class="nav-item "><i class="fas fa-shipping-fast"></i> Quick Dispatch</a>
+      <a href="records.html" class="nav-item "><i class="fas fa-history"></i> Invoice History</a>
+      <a href="purchase.html" class="nav-item"><i class="fas fa-cart-plus"></i> Procurement</a>
+      <a href="inwardfilter.html" class="nav-item active"><i class="fas fa-filter"></i> Inward Filter</a>
+      <a href="advance1filter.html" class="nav-item"><i class="fas fa-search-plus"></i> Advance Filter</a>
+      <a href="index.html" class="nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+ 
+
+  <div class="main">
+    <div class="header"><h1>Inventory Filter</h1></div>
+
+    <div class="form-box">
+      <form class="filter-form" id="filterForm">
+        <select name="po_no" id="poSelect"><option value="">PO.NO</option></select>
+        <select name="stock_name" id="stockSelect"><option value="">Stock Name</option></select>
+        <select name="store_name" id="storeSelect"><option value="">Store Name</option></select>
+
+        <div class="period-line">
+          <strong>Period:</strong>
+          <label for="from_date" style="margin-left:10px;">From:</label>
+          <input type="date" id="from_date" name="from_date">
+          <label for="to_date" style="margin-left:10px;">To:</label>
+          <input type="date" id="to_date" name="to_date">
+        </div>
+
+        <div style="margin-top:10px; display:flex; gap:10px;">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Filter</button>
+          <button type="button" class="btn btn-warning" id="resetBtn"><i class="fas fa-sync-alt"></i> Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="print-area" class="result-section">
+      <div class="result-header">
+        <h2>PAAVAI VARAM EDUCATIONAL TRUST</h2>
+        <h3>PAAVAI INSTITUTIONS</h3>
+      </div>
+      <div class="filters-text" id="filtersText"></div>
+
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th>PO.NO</th>
+            <th>Stock Name</th>
+            <th>Store Name</th>
+            <th>Date</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="6" style="text-align:center;">No records found</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button id="printBtn" class="btn btn-success"><i class="fas fa-print"></i> Print / Download PDF</button>
+  </div>
+</body>
+</html>

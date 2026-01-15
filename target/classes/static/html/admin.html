@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Portal</title>
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Link to your CSS file -->
+<link rel="stylesheet" href="/css/admin.css" />
+</head>
+
+<body>
+<div class="app-container">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+  <div class="sidebar-header"><h2>Admin Portal</h2></div>
+  <nav class="sidebar-nav">
+    <a href="admin.html" class="nav-item active">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a href="forwardbill.html" class="nav-item">
+      <i class="fas fa-file-invoice"></i> Pending Bills
+    </a>
+    <a href="delivery.html" class="nav-item">
+      <i class="fas fa-shipping-fast"></i> Quick Dispatch
+    </a>
+    <a href="records.html" class="nav-item">
+      <i class="fas fa-history"></i> Invoice History
+    </a>
+    <a href="purchase.html" class="nav-item">
+      <i class="fas fa-cart-plus"></i> Procurement
+    </a>
+    <a href="inwardfilter.html" class="nav-item">
+      <i class="fas fa-filter"></i> Inward Filter
+    </a>
+    <a href="advance1filter.html" class="nav-item">
+      <i class="fas fa-search-plus"></i> Advance Filter
+    </a>
+    <a href="index.html" class="nav-item logout">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </nav>
+</aside>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main-content">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>Welcome, Admin 👋</h1>
+      <p>Manage inventory, orders, and stock alerts</p>
+    </header>
+
+    <!-- Threshold Button -->
+    <div class="action-buttons">
+      <button class="btn btn-danger" id="thresholdBtn">
+        <i class="fas fa-exclamation-triangle"></i> Threshold Stock
+      </button>
+    </div>
+
+    <!-- ================= PLACE ORDER ================= -->
+    <section class="card place-order-card">
+      <h2>🧾 Place Order</h2>
+
+      <!-- Buyer Info -->
+      <div class="buyer-info form-row">
+        <div class="input-group">
+          <label for="buyerName">Buyer Name</label>
+          <input type="text" id="buyerName" placeholder="Enter buyer name" />
+        </div>
+        <div class="input-group">
+          <label for="buyerDept">Department</label>
+          <input type="text" id="buyerDept" value="Administration" />
+        </div>
+        <div class="input-group">
+          <label for="buyerInst">Institution</label>
+          <input type="text" id="buyerInst" placeholder="Enter institution" />
+        </div>
+      </div>
+
+      <!-- Add Product -->
+      <div class="add-product form-row" style="position:relative; align-items:flex-end;">
+        <div class="input-group flex-2">
+          <label for="orderStock">Stock</label>
+          <input type="text" id="orderStock" placeholder="Search stock..." autocomplete="off" />
+          <div id="autocomplete-list" class="autocomplete-suggestions"></div>
+        </div>
+        <div class="input-group flex-1">
+          <label for="orderQty">Quantity</label>
+          <input type="number" id="orderQty" placeholder="Qty" min="1" />
+        </div>
+        <button class="btn btn-primary add-item-btn" id="addOrderItemBtn" style="height:42px;">
+          <i class="fas fa-plus"></i> Add
+        </button>
+      </div>
+
+      <!-- Order Table -->
+      <div class="table-wrapper order-wrapper">
+        <table class="order-table" id="orderItemsTable">
+          <thead>
+            <tr>
+              <th style="width:70%">Stock Name</th>
+              <th style="width:20%">Quantity</th>
+              <th style="width:10%">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="3" class="no-data">No items added yet</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn btn-success submit-order-btn" id="submitOrderBtn">
+  <i class="fas fa-paper-plane"></i> Submit Order
+</button>
+    </section>
+
+    <!-- ================= STOCK LIST ================= -->
+    <section class="card stock-list-card">
+      <div class="stock-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2>📦 Stock List</h2>
+        <input type="text" id="stockSearch" class="search-input" placeholder="Search stock..." />
+      </div>
+      <div class="table-wrapper">
+        <table class="stock-table">
+          <thead>
+            <tr>
+              <th style="width:10%">Serial No</th>
+              <th style="width:60%">Stock Name</th>
+              <th style="width:30%">Quantity</th>
+            </tr>
+          </thead>
+          <tbody id="stockTableBody">
+            <tr><td colspan="3" class="no-data">Loading stock...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= ADD NEW STOCK ================= -->
+    <section class="card add-stock-card">
+      <h2>➕ Add New Stock</h2>
+      <div class="form-row" style="align-items:flex-end;">
+        <div class="input-group">
+          <input type="text" id="newStockName" placeholder="Stock Name" />
+        </div>
+        <div class="input-group">
+          <input type="number" id="newStockQty" placeholder="Quantity" min="1" />
+        </div>
+        <button class="btn btn-primary" id="addNewStockBtn" style="height:42px;"><i class="fas fa-plus"></i> Add</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================= THRESHOLD POPUP ================= -->
+<div id="overlay" class="overlay"></div>
+<div id="popup" class="popup" style="display:none">
+  <h2>⚠ Threshold Stock Alert</h2>
+  <div class="table-container"></div>
+  <div class="popup-actions">
+    <button class="btn btn-success" id="closePopupBtn"><i class="fas fa-check"></i> Close</button>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="/js/admin.js"></script>
+</body>
+</html>

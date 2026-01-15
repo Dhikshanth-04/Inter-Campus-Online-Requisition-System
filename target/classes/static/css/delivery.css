@@ -1,0 +1,247 @@
+@charset "UTF-8";
+
+/* ===================== SIDEBAR ===================== */
+.sidebar {
+  width: 260px;
+  background-color: #1f2937;
+  color: #fff;
+  padding: 32px 20px;
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-item.active {
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav-item:hover {
+  background-color: #374151;
+  color: #fff;
+}
+
+.nav-item.logout {
+  margin-top: auto;
+  color: #fca5a5;
+}
+
+.nav-item.logout:hover {
+  background-color: rgba(239,68,68,0.15);
+  color: #dc2626;
+}
+/* ===================== LAYOUT FIX ===================== */
+body {
+  font-family: 'Inter', 'Arial', sans-serif;
+  margin: 0;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+.main-content {
+  margin-left: 260px; /* sidebar width */
+  padding: 32px;
+  min-height: 100vh;
+}
+
+/* ===================== HEADERS ===================== */
+.header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.header p {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* ===================== CARD ===================== */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+/* ===================== BILL CARD ===================== */
+.bill-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  border-left: 5px solid #2563eb;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+}
+
+/* Bill title row (optional if you add later) */
+.bill-card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+/* ===================== TABLE ===================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 14px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+}
+
+th {
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* ===================== DELIVERY STATES ===================== */
+tr.delivered {
+  background-color: #ecfdf5 !important;
+}
+
+tr.delivered td {
+  color: #065f46;
+  font-weight: 600;
+}
+
+tr.skipped {
+  background-color: #fef2f2 !important;
+}
+
+tr.skipped td {
+  color: #991b1b;
+}
+
+/* ===================== BUTTONS ===================== */
+button {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Per-item deliver button */
+.deliver-item-btn {
+  min-width: 90px;
+}
+
+/* ===================== NO DATA ===================== */
+.no-data {
+  text-align: center;
+  color: #6b7280;
+  padding: 30px;
+  font-style: italic;
+}
+
+/* ===================== TOAST ===================== */
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  animation: slideFade 3s forwards;
+}
+
+.toast.success { background: #16a34a; }
+.toast.error   { background: #dc2626; }
+.toast.info    { background: #2563eb; }
+
+@keyframes slideFade {
+  0% { opacity: 0; transform: translateX(20px); }
+  10%,90% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(20px); }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  button {
+    padding: 6px 10px;
+  }
+}

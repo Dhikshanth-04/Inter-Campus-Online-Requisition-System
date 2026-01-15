@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pending Bills | Admin Portal</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Admin CSS -->
+  <link rel="stylesheet" href="/css/forwardbill.css" />
+</head>
+
+<body>
+<div class="app-container">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+  <div class="sidebar-header"><h2>Admin Portal</h2></div>
+  <nav class="sidebar-nav">
+    <a href="admin.html" class="nav-item ">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a href="forwardbill.html" class="nav-item active">
+      <i class="fas fa-file-invoice"></i> Pending Bills
+    </a>
+    <a href="delivery.html" class="nav-item">
+      <i class="fas fa-shipping-fast"></i> Quick Dispatch
+    </a>
+    <a href="records.html" class="nav-item">
+      <i class="fas fa-history"></i> Invoice History
+    </a>
+    <a href="purchase.html" class="nav-item">
+      <i class="fas fa-cart-plus"></i> Procurement
+    </a>
+    <a href="inwardfilter.html" class="nav-item">
+      <i class="fas fa-filter"></i> Inward Filter
+    </a>
+    <a href="advance1filter.html" class="nav-item">
+      <i class="fas fa-search-plus"></i> Advance Filter
+    </a>
+    <a href="index.html" class="nav-item logout">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </nav>
+</aside>
+
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main-content">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>Pending Bills 🧾</h1>
+      <p>Review, modify quantities, and forward pending bills</p>
+    </header>
+
+    <!-- ================= PENDING BILLS CARD ================= -->
+    <section class="card">
+
+      <!-- Card Header -->
+      <div class="stock-header">
+        <h2>📌 Pending Bill List</h2>
+        <input
+          type="number"
+          id="billSearch"
+          class="search-input"
+          placeholder="Search by Bill ID"
+          min="1"
+        />
+      </div>
+
+      <!-- Bills Container -->
+      <div id="billsContainer">
+        <div class="no-data">Loading pending bills...</div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<!-- JS -->
+<script src="/js/forwardbill.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Management | Admin Portal</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Admin CSS -->
+  <link rel="stylesheet" href="/css/admin.css" />
+
+  <!-- Delivery CSS -->
+  <link rel="stylesheet" href="/css/delivery.css" />
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+  <aside class="sidebar">
+  <div class="sidebar-header"><h2>Admin Portal</h2></div>
+  <nav class="sidebar-nav">
+    <a href="admin.html" class="nav-item ">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a href="forwardbill.html" class="nav-item">
+      <i class="fas fa-file-invoice"></i> Pending Bills
+    </a>
+    <a href="delivery.html" class="nav-item active">
+      <i class="fas fa-shipping-fast"></i> Quick Dispatch
+    </a>
+    <a href="records.html" class="nav-item">
+      <i class="fas fa-history"></i> Invoice History
+    </a>
+    <a href="purchase.html" class="nav-item">
+      <i class="fas fa-cart-plus"></i> Procurement
+    </a>
+    <a href="inwardfilter.html" class="nav-item">
+      <i class="fas fa-filter"></i> Inward Filter
+    </a>
+    <a href="advance1filter.html" class="nav-item">
+      <i class="fas fa-search-plus"></i> Advance Filter
+    </a>
+    <a href="index.html" class="nav-item logout">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </nav>
+</aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <header class="header">
+        <h1>Delivery Management 🚚</h1>
+        <p>View approved bills and mark each product as delivered</p>
+      </header>
+
+      <section class="card">
+        <div id="deliveryListContainer">
+          <h2>Approved Bills</h2>
+          <div id="deliveryList">
+            <div class="no-data">Loading approved bills...</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toastContainer" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+  <!-- Delivery JS -->
+  <script src="/js/delivery.js"></script>
+</body>
+</html>

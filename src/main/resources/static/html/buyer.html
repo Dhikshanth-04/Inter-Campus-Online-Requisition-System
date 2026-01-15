@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buyer Portal</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/buyer.css" />
+
+  <!-- JS -->
+  <script src="/js/buyer.js" defer></script>
+</head>
+<body>
+
+<main class="container">
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <h1>Buyer Portal</h1>
+    <div class="user-info">
+      <span id="buyerNameDisplay">Welcome</span>
+      <button class="logout-btn" type="button" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- ================= BUYER FORM ================= -->
+  <form id="billForm" autocomplete="off">
+
+    <!-- ===== BUYER DETAILS ===== -->
+    <section class="buyer-details">
+      <h2>Buyer Details</h2>
+
+      <div class="form-group">
+        <label for="buyer">Indentor</label>
+        <input id="buyer" type="text" readonly />
+      </div>
+
+      <div class="form-group">
+        <label for="dept">Department</label>
+        <input id="dept" list="departments" required />
+      </div>
+
+      <div class="form-group">
+        <label for="insti">Institution</label>
+        <input id="insti" list="institutions" required />
+      </div>
+
+      <datalist id="departments">
+        <option value="CSE">
+        <option value="ECE">
+        <option value="MECH">
+        <option value="EEE">
+        <option value="IT">
+        <option value="AI/ML">
+      </datalist>
+
+      <datalist id="institutions">
+        <option value="PEC">
+        <option value="PCE">
+        <option value="PCT">
+      </datalist>
+    </section>
+
+    <!-- ===== MATERIAL REQUIREMENT ===== -->
+    <section>
+      <h2>Material Requirement</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="itemTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== BILL PREVIEW ===== -->
+    <section id="billPreviewSection" style="display:none;">
+      <h2>Bill Preview</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody id="billPreviewBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== ACTION BUTTONS ===== -->
+    <div class="buttons">
+      <button type="button" onclick="addRow()">➕ Add Item</button>
+      <button type="button" onclick="submitBill()">✅ Submit MRS</button>
+    </div>
+
+  </form>
+
+  <!-- ================= PENDING BILLS ================= -->
+  <section id="pendingSection">
+    <h2>Pending Bills</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Bill ID</th>
+            <th>Created Date</th>
+          </tr>
+        </thead>
+        <tbody id="pendingBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= DELIVERED BILLS ================= -->
+  <section id="deliveredSection">
+    <h2>Delivered Bills</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Bill ID</th>
+            <th>Delivered Date</th>
+          </tr>
+        </thead>
+        <tbody id="deliveredBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= BILL DETAILS MODAL ================= -->
+<div id="billModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Bill Details</h3>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | Inventory Filter</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/css/advance1filter.css">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- External JS -->
+  <script src="/js/advance1filter.js" defer></script>
+
+  <!-- Print Styles -->
+  <style>
+   
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-header"><h2>Admin Portal</h2></div>
+  <nav class="sidebar-nav">
+    <a href="admin.html" class="nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+    <a href="forwardbill.html" class="nav-item"><i class="fas fa-file-invoice"></i> Pending Bills</a>
+    <a href="delivery.html" class="nav-item"><i class="fas fa-shipping-fast"></i> Quick Dispatch</a>
+    <a href="records.html" class="nav-item"><i class="fas fa-history"></i> Invoice History</a>
+    <a href="purchase.html" class="nav-item"><i class="fas fa-cart-plus"></i> Procurement</a>
+    <a href="inwardfilter.html" class="nav-item"><i class="fas fa-filter"></i> Inward Filter</a>
+    <a href="advance1filter.html" class="nav-item active"><i class="fas fa-search-plus"></i> Advance Filter</a>
+    <a href="index.html" class="nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </nav>
+</aside>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div class="container">
+    <h1>AUTHORIZER PORTAL</h1>
+    <h2>INVENTORY FILTER</h2>
+
+    <!-- Form Box Container -->
+    <div class="box-container">
+      <form id="filterForm" class="filter-form">
+
+        <!-- Buyer -->
+        <div class="form-group">
+          <label for="buyerSelect">Buyer</label>
+          <select id="buyerSelect" name="buyer" class="search-input"></select>
+        </div>
+
+        <!-- Department -->
+        <div class="form-group">
+          <label for="deptSelect">Department</label>
+          <select id="deptSelect" name="dept" class="search-input"></select>
+        </div>
+
+        <!-- Institution -->
+        <div class="form-group">
+          <label for="instiSelect">Institution</label>
+          <select id="instiSelect" name="insti" class="search-input"></select>
+        </div>
+
+        <!-- Stock -->
+        <div class="form-group">
+          <label for="stockSelect">Stock</label>
+          <select id="stockSelect" name="stock_name" class="search-input"></select>
+        </div>
+
+        <!-- Particular Date -->
+        <div class="form-group">
+          <label for="particular_date">Particular Date</label>
+          <input type="date" id="particular_date" name="particular_date" class="search-input">
+        </div>
+
+        <!-- From Date -->
+        <div class="form-group">
+          <label for="from_date">From Date</label>
+          <input type="date" id="from_date" name="from_date" class="search-input">
+        </div>
+
+        <!-- To Date -->
+        <div class="form-group">
+          <label for="to_date">To Date</label>
+          <input type="date" id="to_date" name="to_date" class="search-input">
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+          <button type="button" onclick="filterData()" class="btn btn-primary">
+            <i class="fas fa-filter"></i> Filter
+          </button>
+
+          <button type="button" id="resetBtn" class="btn btn-warning">
+            <i class="fas fa-sync-alt"></i> Reset
+          </button>
+
+          <button type="button" onclick="printResults()" class="btn btn-print">
+            <i class="fas fa-print"></i> Print
+          </button>
+        </div>
+
+      </form>
+    </div> <!-- End Box Container -->
+
+    <!-- Result Area including Selected Filters -->
+    <div class="scrollable-table-container" id="resultArea">
+      <div id="selectedFilters">Selected Filters: None</div>
+
+      <table id="printableTable" border="1" cellspacing="0" cellpadding="5">
+        <thead>
+          <tr>
+            <th>Buyer</th>
+            <th>Department</th>
+            <th>Institution</th>
+            <th>Stock</th>
+            <th>Quantity</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6">No records found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> <!-- End Result Table -->
+
+  </div> <!-- End Container -->
+</div>
+
+
+</body>
+</html>

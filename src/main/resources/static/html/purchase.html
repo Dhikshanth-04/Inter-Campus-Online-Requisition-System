@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procurement Portal</title>
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/purchase.css">
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/js/purchase.js" defer></script>
+</head>
+<body>
+<div class="app-container">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="sidebar-header"><h2>Admin Portal</h2></div>
+    <nav class="sidebar-nav">
+      <a href="admin.html" class="nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="forwardbill.html" class="nav-item"><i class="fas fa-file-invoice"></i> Pending Bills</a>
+      <a href="delivery.html" class="nav-item"><i class="fas fa-shipping-fast"></i> Quick Dispatch</a>
+      <a href="records.html" class="nav-item"><i class="fas fa-history"></i> Invoice History</a>
+      <a href="purchase.html" class="nav-item active"><i class="fas fa-cart-plus"></i> Procurement</a>
+      <a href="inwardfilter.html" class="nav-item"><i class="fas fa-filter"></i> Inward Filter</a>
+      <a href="advance1filter.html" class="nav-item"><i class="fas fa-search-plus"></i> Advance Filter</a>
+      <a href="index.html" class="nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main-content">
+    <h1>Procurement Portal</h1>
+
+    <section class="form-section">
+        <h2>Add Stock Purchase</h2>
+        <form id="stockForm">
+            <label>PO No:</label>
+            <input type="number" id="po_no" placeholder="Enter PO Number" required>
+
+            <label>Date:</label>
+            <input type="date" id="date" required>
+
+            <label>Store Name:</label>
+            <input type="text" id="store_name" required>
+
+            <h3>Items</h3>
+            <div id="items_container"></div>
+            <button type="button" id="add_item">Add Item</button>
+
+            <br><br>
+            <button type="submit">Save Purchase Order</button>
+        </form>
+    </section>
+
+    <section class="list-section">
+        <h2>Purchased Stocks</h2>
+        <table id="stockTable">
+            <thead>
+                <tr>
+                    <th>PO No</th>
+                    <th>Stock Name</th>
+                    <th>Date</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th>Store Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="6">Loading...</td></tr>
+            </tbody>
+        </table>
+    </section>
+  </main>
+</div>
+</body>
+</html>

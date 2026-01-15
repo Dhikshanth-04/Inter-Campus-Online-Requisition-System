@@ -1,0 +1,326 @@
+@charset "UTF-8";
+
+/* ===================== ROOT THEME ===================== */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+
+  --success: #16a34a;
+  --success-dark: #15803d;
+
+  --danger: #dc2626;
+  --danger-dark: #b91c1c;
+
+  --warning: #fde047;
+
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+
+  --shadow-sm: 0 4px 10px rgba(0,0,0,0.08);
+  --shadow-md: 0 12px 28px rgba(0,0,0,0.14);
+  --shadow-lg: 0 18px 45px rgba(0,0,0,0.18);
+}
+
+/* ===================== RESET ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===================== BODY ===================== */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: radial-gradient(circle at top, #eef2ff, #f8fafc);
+  color: var(--gray-800);
+  line-height: 1.6;
+}
+
+/* ===================== SIDEBAR ===================== */
+.sidebar {
+  width: 250px;
+  background-color: var(--gray-900);
+  color: #fff;
+  height: 100vh;
+  position: fixed;
+  top: 0; 
+  left: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;      /* increased font size */
+  font-weight: 700;       /* bold */
+  margin-bottom: 20px;    /* more spacing from nav */
+  color: #fff;            /* ensures text is visible */
+  text-align: left;     /* center for emphasis */
+  
+}
+
+
+/* ===================== NAV ===================== */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: #cbd5e1;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 1rem;
+}
+.nav-item i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+.nav-item:hover {
+  background-color: var(--gray-800);
+  color: #fff;
+  cursor: pointer;
+}
+.nav-item.active {
+  background-color: var(--primary);
+  color: #fff;
+}
+.nav-item.logout {
+  margin-top: auto;
+  background-color: transparent;
+  color: #f87171;
+}
+.nav-item.logout:hover {
+  background-color: rgba(220, 38, 38, 0.1);
+}
+
+/* ===================== HAMBURGER ===================== */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  font-size: 1.7rem;
+  cursor: pointer;
+  z-index: 110;
+}
+
+/* ===================== MAIN CONTENT ===================== */
+.main-content {
+  margin-left: 250px;
+  padding: 2.4rem;
+  width: calc(100% - 250px);
+}
+
+/* ===================== HEADINGS ===================== */
+h1 {
+  text-align: center;
+  margin-bottom: 2.8rem;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--gray-900);
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 17px;
+  margin-bottom: 12px;
+  color: var(--gray-600);
+}
+
+/* ===================== APPROVAL GRID ===================== */
+.approval-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.25fr;
+  gap: 1.4rem;
+}
+
+/* ===================== BOXES ===================== */
+.queue-box,
+.bill-details {
+  background: #ffffff;
+  padding: 1.4rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.queue-box:hover,
+.bill-details:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===================== BILL QUEUE BUTTONS ===================== */
+#userBillsList button,
+#adminBillsList button {
+  width: 100%;
+  text-align: left;
+  padding: 11px 16px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+#userBillsList button::after,
+#adminBillsList button::after {
+  content: "›";
+  position: absolute;
+  right: 16px;
+  opacity: 0.7;
+}
+
+#userBillsList button:hover,
+#adminBillsList button:hover {
+  transform: translateX(6px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===================== TABLE ===================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 13px;
+  border-bottom: 1px solid var(--gray-200);
+  font-size: 14px;
+}
+
+th {
+  background-color: var(--gray-100);
+  font-weight: 700;
+  color: var(--gray-700);
+}
+
+tr:hover td {
+  background-color: #f9fafb;
+}
+
+/* ===================== FORM ===================== */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 11px 12px;
+  margin-top: 10px;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.18);
+  outline: none;
+}
+
+/* ===================== ACTION BUTTONS ===================== */
+.actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+button {
+  padding: 11px 18px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+#approveBtn {
+  background: linear-gradient(90deg, var(--success), var(--success-dark));
+  color: #fff;
+}
+
+#rejectBtn {
+  background: linear-gradient(90deg, var(--danger), var(--danger-dark));
+  color: #fff;
+}
+
+#waitBtn {
+  background-color: var(--warning);
+  color: #000;
+}
+
+#backBtn {
+  background-color: #64748b;
+  color: #fff;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===================== TOAST ===================== */
+#toastContainer div {
+  padding: 14px 22px;
+  margin-top: 12px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 900px) {
+  .approval-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

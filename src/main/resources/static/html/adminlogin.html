@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Authenticator Login</title>
+  
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/css/adminlogin.css" />
+
+  <!-- External JS -->
+  <script src="/js/adminlogin.js" defer></script>
+</head>
+
+<body>
+
+
+ <div class="login-container">
+  <h2>PAAVAI ENGINEERING COLLEGE (AUTONOMOUS)</h2>
+  <h2>AUTHENTICATOR LOGIN</h2>
+
+
+    <div class="login-body">
+      <form
+        id="login-form"
+        action="/adminLoginServlet"
+        method="post"
+        autocomplete="off"
+      >
+        <!-- Prevent browser autofill -->
+        <input type="text" style="display:none" autocomplete="username">
+        <input type="password" style="display:none" autocomplete="new-password">
+
+        <label for="username">USERNAME:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter Username"
+          required
+          autocomplete="off"
+        />
+
+        <label for="password">PASSWORD:</label>
+        <div class="password-container">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter Password"
+            required
+            autocomplete="new-password"
+          />
+          <i
+            class="fas fa-eye toggle-password"
+            id="toggleIcon"
+            title="Show / Hide Password"
+          ></i>
+        </div>
+
+        <label class="label-checkbox">
+          <input type="checkbox" id="rememberMe" name="rememberMe" />
+          REMEMBER ME
+        </label>
+
+        <button type="submit">LOGIN</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

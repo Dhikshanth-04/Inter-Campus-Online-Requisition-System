@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorizer Portal | Stock Inventory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+       <link rel="stylesheet" href="/css/correspondent.css">
+       <script src="/js/correspondent.js" defer></script>
+
+</head>
+<body>
+    <div class="hamburger" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="sidebar">
+        <h2>Authorizer Portal</h2>
+        <nav>
+            <a href="correspondent.html" class="nav-item active"><i class="fas fa-home"></i> Home</a>
+            <a href="approval.html" class="nav-item"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <a href="inward1filter.html" class="nav-item"><i class="fas fa-arrow-down"></i> Inward Filtration</a>
+            <a href="advancefilter.html" class="nav-item"><i class="fas fa-filter"></i> Advanced Filtration</a>
+            <a href="index.html" class="nav-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <h1>AUTHORIZER PORTAL</h1>
+        <h2>INVENTORY TABLE</h2>
+
+        <div class="search-sort-bar">
+            <input id="searchInput" type="text" class="search-input" onkeyup="filterTable()" placeholder="Search stock name...">
+        </div>
+
+        <div class="scrollable-table-container">
+            <table id="stockTable">
+                <thead>
+                    <tr>
+                        <th>SERIAL NO</th>
+                        <th>STOCK NAME</th>
+                        <th>QUANTITY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Inventory rows will be injected here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
